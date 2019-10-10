@@ -16,8 +16,7 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Lista</th>
+      <th scope="col">lista de Chequeo</th>
       <th scope="col">Autor</th>
       <th scope="col">Fecha</th>
       <th scope="col">Estado</th>
@@ -26,31 +25,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>fds2r</td>
+      <tr *ngFor="let planilla of planillas">
+      <td>{{planilla.nombreLista}}</td>
       <td>pedro</td>
       <td>12/01/201</td>
       <td>lista</td>
       <td>action</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>fds2r</td>
-      <td>pedro</td>
-      <td>12/01/201</td>
-      <td>lista</td>
-      <td>action</td>
-
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>fds2r</td>
-      <td>pedro</td>
-      <td>12/01/201</td>
-      <td>lista</td>
-      <td>action</td>
-    </tr>
+   
+   
   </tbody>
 
 

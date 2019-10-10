@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col">
             <div class="teal">
-                <h4>Nueva Plantilla </h4>
+                <h4> Lista de chequeo </h4>
             </div>
             <br>
             <div class="container">
@@ -12,30 +12,24 @@
                         <div class="container">
                             <form (ngSubmit)="agregar()">
                                 <div class="col-sm">
-                                    <b> Plantilla de valoración: </b>
+                                    <b> Nueva listas: </b>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col">Tipo de Plantilla:</div>
+                                            <div class="col">Tipo de lista:</div>
                                             <div class="col">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <label class="input-group-text"
                                                             for="inputGroupSelect01">Opciones</label>
                                                     </div>
-                                                    <select class="custom-select" [(ngModel)]="datosplantilla.planilla"
+                                                    <select class="custom-select"    [(ngModel)]="datosplantilla.planilla"
                                                         name="planilla" required>
-                                                        <option value="">Seleccion un tipo</option>
-                                                        <option value="Calidad">Calidad</option>
-                                                        <option value="Servicio">Servicio</option>
-                                                        <option value="Oportunidad">Oportunidad</option>
-                                                        <option value="Capacidad">Capacidad</option>
-                                                        <option value="Precio">Precio</option>
-                                                        <option value="Método">Método</option>
-                                                        <option value="Materiales">Materiales</option>
-                                                        <option value="Competencias">Competencias</option>
+                                                        <option value="Calidad"> seleccione una lista </option>
+                                                        <option *ngFor="let planilla of planillas" > <samp> {{planilla.nombreLista}} </samp>   </option>
+
                                                     </select>
                                                 </div>
                                             </div>

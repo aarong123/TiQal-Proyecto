@@ -44,6 +44,18 @@ constructor(private PlantillaService : PlantillaService) {
    
   }
 
+  eliminar(planilla) {
+    this.PlantillaService.eliminarplanilla(planilla);
+  }
+
+  editar(planilla) {
+    this.datosplantilla = planilla;
+  }
+
+  agregarCriterioEditado(){
+    this.PlantillaService.editarplanilla(this.datosplantilla);
+  }
+
 
 
 }
