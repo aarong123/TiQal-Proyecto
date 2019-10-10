@@ -1,0 +1,268 @@
+<app-menu></app-menu>
+<div class="card card-5">
+    <div class="row">
+        <div class="col">
+            <div class="teal">
+                <h4> Crear nueva plantilla
+                </h4>
+            </div>
+            <br>
+            <div class="container">
+                <div class="col-sm">
+                    Atributos de lista de Chequeo
+                </div>
+                <br>
+                <div class="row">
+                    <div class="w-100"></div>
+                    <div class="col">Nombre de raiz</div>
+                    <div class="col">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                    placeholder="Escribir">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">Nombre de platilla</div>
+                    <div class="col">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                    placeholder="Escribir">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">Descripcion de la plantilla</div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col">Umbral de valoracion</div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        placeholder="Escribir">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: auto">
+                        <button type="button" class="btn btn-primary btn-sm">Guardar</button><br><br>
+                        <button type="button" class="btn btn-primary btn-sm">Cancelar</button>
+                    </div>
+                    <br>
+
+                    <div class="container">
+                        <div class="teal">
+                            <h4>Criterios de valoración</h4>
+                            <div class="modal-body">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Criterio</th>
+                                            <th scope="col">Tipo de criterio</th>
+                                            <th scope="col">Ponderación (%)</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let criterio of criterios">
+                                            <td>{{criterio.criterio}}</td>
+                                            <td>{{criterio.tipoCriterio}}</td>
+                                            <td>{{criterio.ponderacion}}</td>
+                                            <td>
+                                                <div class="float-center mx-5" (click)="editar(criterio)"
+                                                    data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="far fa-edit"></i> Editar
+                                                </div>
+                                                <div class="float-center" (click)="eliminar(criterio)">
+                                                    <i class="far fa-trash-alt"></i> Eliminar
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-sm" (click)="show=true"><i
+                                    class="fas fa-plus"></i> Nuevo criterio de valoración</button>
+                            <br><br>
+
+                            <div *ngIf="show">
+                                <div class="container">
+                                    <form (ngSubmit)="agregar()">
+                                        <div class="col-sm">
+                                            <b>Nuevo criterio de valoración</b>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="w-100"></div>
+                                            <div class="col">Criterio de valoración:</div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="criterio"
+                                                        placeholder="Escribir" [(ngModel)]="datosCriterio.criterio"
+                                                        required>
+                                                </div>
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">Tipo de criterio:</div>
+                                                    <div class="col">
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <label class="input-group-text"
+                                                                    for="inputGroupSelect01">Opciones</label>
+                                                            </div>
+                                                            <select class="custom-select"
+                                                                [(ngModel)]="datosCriterio.tipoCriterio"
+                                                                name="tipoCriterio" required>
+                                                                <option value="">Seleccion un tipo</option>
+                                                                <option value="Calidad">Calidad</option>
+                                                                <option value="Servicio">Servicio</option>
+                                                                <option value="Oportunidad">Oportunidad</option>
+                                                                <option value="Capacidad">Capacidad</option>
+                                                                <option value="Precio">Precio</option>
+                                                                <option value="Método">Método</option>
+                                                                <option value="Materiales">Materiales</option>
+                                                                <option value="Competencias">Competencias</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-100"></div>
+                                            <div class="col">Ponderación (%):</div>
+                                            <div class="col">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control" placeholder="Escribir"
+                                                            min="1" required name="ponderacion"
+                                                            [(ngModel)]="datosCriterio.ponderacion">
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">Descripción de criterio</div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="3"
+                                                                [(ngModel)]="datosCriterio.desCriterio"
+                                                                name="desCriterio"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <button type="submit" class="btn btn-primary btn-sm"><i
+                                                        class="far fa-save"></i> Guardar
+                                                    criterio</button><br><br>
+                                                <button type="button" class="btn btn-primary btn-sm"
+                                                    (click)="show=false"><i class="fas fa-times"></i>
+                                                    Cancelar</button><br><br>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ventana donde se edita el criterio -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar criterio de valoración</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="agregarCriterioEditado()">
+                    <div class="container">
+                        <div class="row">
+                            <div class="w-100"></div>
+                            <div class="col">Criterio de valoración:</div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="criterio" placeholder="Escribir"
+                                        [(ngModel)]="editarCriterio.criterio" required>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">Tipo de criterio:</div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text"
+                                                    for="inputGroupSelect01">Opciones</label>
+                                            </div>
+                                            <select class="custom-select" [(ngModel)]="editarCriterio.tipoCriterio"
+                                                name="tipoCriterio" required>
+                                                <option value="">Seleccion un tipo</option>
+                                                <option value="Calidad">Calidad</option>
+                                                <option value="Servicio">Servicio</option>
+                                                <option value="Oportunidad">Oportunidad</option>
+                                                <option value="Capacidad">Capacidad</option>
+                                                <option value="Precio">Precio</option>
+                                                <option value="Método">Método</option>
+                                                <option value="Materiales">Materiales</option>
+                                                <option value="Competencias">Competencias</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-100"></div>
+                            <div class="col">Ponderación (%):</div>
+                            <div class="col">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                            required name="ponderacion" [(ngModel)]="editarCriterio.ponderacion">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">Descripción de criterio</div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="3"
+                                                [(ngModel)]="editarCriterio.desCriterio" name="desCriterio"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i> Editar
+                            criterio</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

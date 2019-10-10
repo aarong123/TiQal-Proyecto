@@ -1,0 +1,21 @@
+<div class="fondo">
+  <div class="wrapper">
+    <form action="#" class="formularioLogin">
+      <p class="title">Inicio de sesión</p>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+        </div>
+        <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required autofocus>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+      </div>
+      <!-- Se puso el router link porque no valida los campos y no deja pasar a la pagina home por si solo, TEMPORAL-->
+      <button type="submit" class="btn btn-primary" [routerLink]="['/home']"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</button>
+    </form>
+  </div>
+</div>

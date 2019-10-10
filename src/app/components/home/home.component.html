@@ -1,0 +1,134 @@
+<app-menu></app-menu>
+<div class="card card-5">
+    <div class="row">
+        <div class="col">
+            <div class="teal">
+                <h4>Nueva Plantilla </h4>
+            </div>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="container">
+                            <form (ngSubmit)="agregar()">
+                                <div class="col-sm">
+                                    <b> Plantilla de valoración: </b>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">Tipo de Plantilla:</div>
+                                            <div class="col">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text"
+                                                            for="inputGroupSelect01">Opciones</label>
+                                                    </div>
+                                                    <select class="custom-select" [(ngModel)]="datosplantilla.planilla"
+                                                        name="planilla" required>
+                                                        <option value="">Seleccion un tipo</option>
+                                                        <option value="Calidad">Calidad</option>
+                                                        <option value="Servicio">Servicio</option>
+                                                        <option value="Oportunidad">Oportunidad</option>
+                                                        <option value="Capacidad">Capacidad</option>
+                                                        <option value="Precio">Precio</option>
+                                                        <option value="Método">Método</option>
+                                                        <option value="Materiales">Materiales</option>
+                                                        <option value="Competencias">Competencias</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">Nombre de lista:</div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="nombreLista"
+                                                placeholder="Escribir" [(ngModel)]="datosplantilla.nombreLista"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">Observaciones</div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="observaciones"
+                                                placeholder="Escribir" [(ngModel)]="datosplantilla.observaciones"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">Referencias</div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="referencias"
+                                                placeholder="Escribir" [(ngModel)]="datosplantilla.referencias"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">valoración:</div>
+                                    <div class="col">
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                                    required name="valo1" [(ngModel)]="datosplantilla.valo1">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">valoración:</div>
+                                    <div class="col">
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                                    required name="valo2" [(ngModel)]="datosplantilla.valo2">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">valoración </div>
+                                    <div class="col">
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                                    required name="valo3" [(ngModel)]="datosplantilla.valo3">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">valoración </div>
+                                    <div class="col">
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                                    required name="valo4" [(ngModel)]="datosplantilla.valo4">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--   <div class="container">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="far fa-save"></i>
+                                            Guardar
+                                            criterio</button><br><br>
+                                    </div> -->
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col">
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="far fa-save"></i>
+                                            Guardar
+                                            criterio</button> </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

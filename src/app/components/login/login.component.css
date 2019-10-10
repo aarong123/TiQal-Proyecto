@@ -1,0 +1,58 @@
+.fondo {
+    height: 100vh;
+    background:  url("https://miro.medium.com/max/1200/1*w8fFdZ3gAy7q1x_qOFB-gg.jpeg") no-repeat 50% fixed;
+    /* https://www.marketreal.es/wp-content/uploads/2018/08/resultados-marketing-empresa-gestion.jpg
+    https://www.iberopuebla.mx/sites/default/files/styles/1920x930_s_c/public/slidp/img-bg/00_img_d._inteligencia_empresarial_copy.jpg?itok=OyZVz4R*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.formularioLogin {
+    border-radius: 2px 2px 5px 5px;
+    padding: 10px 20px 20px 20px;
+    width: 90%;
+    max-width: 320px;
+    background: #ffffff;
+    position: relative;
+    padding-bottom: 30px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 95%;
+}
+
+.title {
+    color: #444;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0 30px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    border-radius: 40px;
+}
+
+input {
+    display: block;
+    border-radius: 40px;
+    color: #ccc;
+}
+
+span {
+    display: block;
+    margin: 0 auto;
+    border-radius: 40px;
+}
