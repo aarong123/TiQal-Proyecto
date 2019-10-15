@@ -23,6 +23,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { TablaadminComponent } from './components/tablaadmin/tablaadmin.component';
 import { PaginanoencontradaComponent } from './components/paginanoencontrada/paginanoencontrada.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { PaginanoencontradaComponent } from './components/paginanoencontrada/pag
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, BrowserAnimationsModule // imports firebase/auth, only needed for auth features
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
