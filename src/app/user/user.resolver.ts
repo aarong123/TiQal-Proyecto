@@ -16,7 +16,7 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
       this.userService.getCurrentUser()
       .then(res => {
         if(res.providerData[0].providerId == 'password'){
-          user.image = 'https://via.placeholder.com/400x300';
+          user.image = '../../assets/img/gui-2311261_1280.png';
           user.name = res.displayName;
           user.provider = res.providerData[0].providerId;
           return resolve(user);

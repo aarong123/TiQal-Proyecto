@@ -29,22 +29,6 @@ export class RegisterComponent {
      });
    }
 
-   tryFacebookLogin(){
-     this.authService.doFacebookLogin()
-     .then(res =>{
-       this.router.navigate(['/user']);
-     }, err => console.log(err)
-     )
-   }
-
-   tryTwitterLogin(){
-     this.authService.doTwitterLogin()
-     .then(res =>{
-       this.router.navigate(['/user']);
-     }, err => console.log(err)
-     )
-   }
-
    tryGoogleLogin(){
      this.authService.doGoogleLogin()
      .then(res =>{
@@ -58,7 +42,7 @@ export class RegisterComponent {
      .then(res => {
        console.log(res);
        this.errorMessage = "";
-       this.successMessage = "Your account has been created";
+       this.successMessage = "Tu cuenta a sido creada";
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
