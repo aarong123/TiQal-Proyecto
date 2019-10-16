@@ -1,10 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light teal">
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['/home']">Inicio </a>
-      <!---   <a class="nav-item nav-link" [routerLink]="['/plantilla']">PLANTILLAS</a>-->
-      <a class="nav-item nav-link" [routerLink]="['/tabla']">Tabla del rol Staff</a>
-      <a class="nav-item nav-link" [routerLink]="['/tablaADMIN']">Tabla del Administrador</a>
+<nav class="navbar navbar-dark primary-color teal" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+            <img src=".../../../../../assets/img/delivery.png" height="40" alt="mdb logo">
+        </div>
+      <ul class="nav navbar-nav">
+<!--         <li><a  [routerLink]="['/home']">Inicio</a></li>
+ -->        <!---   <a class="nav-item nav-link" [routerLink]="['/plantilla']">PLANTILLAS</a>-->
+        <li><a [routerLink]="['/tabla']">Tabla del rol Staff</a></li>
+        <li><a [routerLink]="['/tablaADMIN']">Tabla del Administrador</a></li>
+        <li class="active" ><a href="#">cerrar sesion</a></li>
+      </ul>
     </div>
-  </div>
-</nav>
+  </nav>
+
+  
