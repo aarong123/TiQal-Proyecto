@@ -2,16 +2,17 @@
 <div class="card card-5">
     <div class="row">
         <div class="col">
-            <div class="teal">
+         <!--    <div class="teal">
                 <h4> Crear nueva plantilla
                 </h4>
             </div>
-            <br>
+            <br> -->
             <div class="container">
-                <div class="col-sm">
-                    Atributos de lista de Chequeo
-                </div>
-                <br>
+                    <div class="teal">
+                            <h4 class="h4"> Atributos de lista de Chequeo</h4>
+                        </div>
+                        <br>
+               
                 <div class="row">
                     <div class="w-100"></div>
                     <div class="col">Nombre de raiz</div>
@@ -51,12 +52,15 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin: auto">
-                        <button type="button" class="btn btn-primary btn-sm">Guardar</button><br><br>
-                        <button type="button" class="btn btn-primary btn-sm">Cancelar</button>
-                    </div>
-                    <br>
-
+                    <div class="container1">
+                                       
+                            <div class="right">
+                                    <button type="button" class="btn btn-primary btn-sm">Guardar</button><br><br>
+<!--                                     <button type="button" class="btn btn-primary btn-sm">Cancelar</button>   
+ -->                                </div>
+                                <br> 
+                            </div>
+                            <br>
                     <div class="container">
                         <div class="teal">
                             <h4>Criterios de valoración</h4>
@@ -80,9 +84,10 @@
                                                     data-toggle="modal" data-target="#exampleModal">
                                                     <i class="far fa-edit"></i> Editar
                                                 </div>
-                                                <div class="float-center" (click)="eliminar(criterio)">
-                                                    <i class="far fa-trash-alt"></i> Eliminar
-                                                </div>
+                                                
+                                                <button type="submit" (click)="editar(criterio)" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"><i class="far fa-edit"></i> Editar</button>
+                                                    <br><br>
+                                                <button type="submit" (click)="eliminar(criterio)" class="btn btn-primary"><i class="far fa-edit"></i> Eliminar</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -100,6 +105,11 @@
                                             <b>Nuevo criterio de valoración</b>
                                         </div>
                                         <br>
+                                        <div class="float-center mx-5" (click)="editar(criterio)"
+                                        data-toggle="modal" data-target="#exampleModal">
+                                        <i class="far fa-edit"></i> Editar
+                                    </div>
+                                    
 
                                         <div class="row">
                                             <div class="w-100"></div>
@@ -176,6 +186,8 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -257,8 +269,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i> Editar
-                            criterio</button>
+                        <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i> Editar criterio</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </form>
