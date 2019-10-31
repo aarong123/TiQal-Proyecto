@@ -7,7 +7,7 @@
                 </h4>
             </div>
             <br>
-            <div class="container">
+            <div class="container" (ngSubmit)="agregarpt()">
                 <div class="col-sm">
                     Atributos de lista de Chequeo
                 </div>
@@ -19,7 +19,7 @@
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Escribir">
+                                    placeholder="Escribir" name="nombreraiz"  [(ngModel)]="datospt.nombreraiz">
                             </div>
                         </form>
                     </div>
@@ -28,8 +28,8 @@
                     <div class="col">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Escribir">
+                                <input type="text" class="form-control" id="formGroupExampleInput" name="nombrePlantilla"
+                                    placeholder="Escribir" [(ngModel)]="datospt.nombrePlantilla">
                             </div>
                         </form>
                     </div>
@@ -38,30 +38,32 @@
                             <div class="col">Descripcion de la plantilla</div>
                             <div class="col">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observaciones" [(ngModel)]="datospt.observaciones" ></textarea>
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col">Umbral de valoracion</div>
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="formGroupExampleInput"
-                                        placeholder="Escribir">
+                                    <input type="text" class="form-control" id="formGroupExampleInput" 
+                                        placeholder="Escribir" name="umbral" [(ngModel)]="datospt.umbral">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <!-- <div style="margin: auto">
                         <button type="button" class="btn btn-primary btn-sm">Guardar</button><br><br>
                         <button type="button" class="btn btn-primary btn-sm">Cancelar</button>
                     </div> -->
                     <br>
 
-                    <div class="container">
+                    <div class="container" >
                         <div class="teal">
                             <h4>Criterios de valoración</h4>
                             <div class="modal-body">
-                                <table class="table table-sm">
+                                <table class="table table-sm" >
                                     <thead>
                                         <tr>
                                             <th scope="col">Criterio</th>
@@ -71,8 +73,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let criterio of criterios">
-                                            <td>{{criterio.criterio}}</td>
+                                        <tr *ngFor="let criterio of criterios" >
+                                            <td> {{criterio.criterio}}</td>
                                             <td>{{criterio.tipoCriterio}}</td>
                                             <td>{{criterio.ponderacion}}</td>
                                             <td>
@@ -178,6 +180,11 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                
+                <button type="submit" class="btn btn-primary btn-sm" (click)="agregarpt()" ><i
+                    class="far fa-save"></i> Guardar
+                Plantilla</button>
             </div>
         </div>
     </div>

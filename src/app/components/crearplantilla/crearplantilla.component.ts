@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CriterioService } from 'src/app/services/criterio/criterio.service';
+import { PtService} from 'src/app/services/pt/pt.service'
 
 @Component({
   selector: 'app-crearplantilla',
@@ -9,6 +10,15 @@ import { CriterioService } from 'src/app/services/criterio/criterio.service';
 export class CrearplantillaComponent implements OnInit {
 
   criterios: any;
+  plantilla: any;
+
+  datospt: any = {
+    nombreraiz: '',
+  nombrePlantilla: '',
+  observaciones: '',
+  umbral: '',
+  criterio1: '',
+  }
 
   datosCriterio: any = {
     criterio: '',
@@ -24,8 +34,12 @@ export class CrearplantillaComponent implements OnInit {
     desCriterio: '',
   }
 
-  constructor(private criteriosConexion : CriterioService) {
-    this.criteriosConexion.listaCriterios().subscribe(criterio => {
+  constructor(private criteriosConexion : CriterioService , private ptConexion : PtService) {
+    this.ptConexion.listaplatillas().subscribe( plantillas => {
+      this.plantilla = plantillas;
+      console.log(this.plantilla);  
+    })
+    this.criteriosConexion.listaCriterios().subscribe( criterio => {
       this.criterios = criterio;
       console.log(this.criterios);  
     })
@@ -33,8 +47,19 @@ export class CrearplantillaComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
+  agregarpt(){
+    this.ptConexion.agregarplanilla(this.datospt);
+    this.datospt.nombreraiz = '';
+    this.datospt.nombrePlantilla = '';
+    this.datospt.observaciones = '';
+    this.datospt.umbral = undefined;
+    this.datospt.criterio1 = '';
+
+    
+  }
   agregar(){
     this.criteriosConexion.agregarCriterio(this.datosCriterio);
     this.datosCriterio.criterio = '';
