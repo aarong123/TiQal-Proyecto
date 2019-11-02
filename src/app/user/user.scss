@@ -4,12 +4,15 @@
   margin-bottom: 40px;
 }
 
-.row{
-  text-align: center;
-  margin-top: 10px;
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -159px;
+  margin-left: 239px;
 }
 
 .image {
-  width: 100%
+  width: 50%
 }
-

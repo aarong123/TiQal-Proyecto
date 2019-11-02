@@ -20,7 +20,7 @@ export class UserService {
         if (user) {
           resolve(user);
         } else {
-          reject('Ningún usuario ha iniciado sesión');
+          reject('No user logged in');
         }
       })
     })

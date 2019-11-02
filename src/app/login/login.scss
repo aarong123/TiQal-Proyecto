@@ -3,11 +3,19 @@
   font-size: 30px;
   margin-bottom: 40px;
 }
-
-.row{
-  margin-top: 10px;
+.bton{
+  color: #fff;
+  background-color:rgb(4, 163, 236);
+  border-color: rgb(4, 163, 236);
 }
-
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -159px;
+  margin-left: 239px;
+}
 .error{
   color: red;
 }

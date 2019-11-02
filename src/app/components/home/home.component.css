@@ -20,19 +20,7 @@ body {
   .teal{
     text-align: center;
     background: rgb(4, 163, 236);
-    border-radius: 10px;
+    position: relative;
+
 
   }
-  .h4{
-    line-height: 2.1;
-  }
-  .container1{
-    text-align:center
-}
-
-.right{
-    float: right;
-}
-.button{
-    background: rgb(4, 163, 236);
-}
