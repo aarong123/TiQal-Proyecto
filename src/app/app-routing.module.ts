@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { AuthGuard } from './core/auth.guard';
 import { UserResolver } from './user/user.resolver';
 import { GrafiComponent } from './components/grafi/grafi.component';
+import { PdfComponent } from './components/pdf/pdf.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'tabla', component:  TablaComponent },
   { path: 'tablaADMIN', component:  TablaadminComponent },
   { path: 'GrafiComponent', component:  GrafiComponent },
+  { path: 'PdfComponent', component:  PdfComponent },
   { path: '**', redirectTo: '/pagina-no-encontrada', pathMatch: 'full' }
 ];
 

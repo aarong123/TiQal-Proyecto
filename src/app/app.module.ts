@@ -30,6 +30,7 @@ import { environment } from '../environments/environment';
 //Servicios
 import { CriterioService } from './services/criterio/criterio.service';
 import { GrafiComponent } from './components/grafi/grafi.component';
+import { PdfComponent } from './components/pdf/pdf.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { GrafiComponent } from './components/grafi/grafi.component';
     UserComponent,
     RegisterComponent,
     GrafiComponent,
+    PdfComponent,
 
   ],
   imports: [
