@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './core/auth.guard';
 import { UserResolver } from './user/user.resolver';
+import { GrafiComponent } from './components/grafi/grafi.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'home', component:  HomeComponent },
   { path: 'tabla', component:  TablaComponent },
   { path: 'tablaADMIN', component:  TablaadminComponent },
+  { path: 'GrafiComponent', component:  GrafiComponent },
   { path: '**', redirectTo: '/pagina-no-encontrada', pathMatch: 'full' }
 ];
 

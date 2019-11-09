@@ -29,6 +29,8 @@ import { environment } from '../environments/environment';
 
 //Servicios
 import { CriterioService } from './services/criterio/criterio.service';
+import { GrafiComponent } from './components/grafi/grafi.component';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { CriterioService } from './services/criterio/criterio.service';
    
     UserComponent,
     RegisterComponent,
+    GrafiComponent,
 
   ],
   imports: [
