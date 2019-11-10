@@ -7,74 +7,73 @@
                 </h4>
             </div>
             <br>
-            <div class="container" (ngSubmit)="agregarpt()">
-                <div class="col-sm">
-                    Atributos de lista de Chequeo
-                </div>
+            <div class="container"  (ngSubmit)="agregarpt()">
+                
                 <br>
                 <div class="row">
                     <div class="w-100"></div>
                     <div class="col">Nombre de raiz</div>
                     <div class="col">
-                        <form>
+                        
                             <div class="form-group">
                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Escribir" name="nombreraiz"  [(ngModel)]="datospt.nombreraiz">
+                                    placeholder="Escribir" name="nombre" [(ngModel)]="datospt.nombreraiz">
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="w-100"></div>
                     <div class="col">Nombre de platilla</div>
                     <div class="col">
-                        <form>
+                      
                             <div class="form-group">
-                                <input type="text" class="form-control" id="formGroupExampleInput" name="nombrePlantilla"
+                                <input type="text" class="form-control" id="formGroupExampleInput"
                                     placeholder="Escribir" [(ngModel)]="datospt.nombrePlantilla">
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col">Descripcion de la plantilla</div>
                             <div class="col">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observaciones" [(ngModel)]="datospt.observaciones" ></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="datospt.observaciones"></textarea>
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col">Umbral de valoracion</div>
                             <div class="col">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="formGroupExampleInput" 
-                                        placeholder="Escribir" name="umbral" [(ngModel)]="datospt.umbral">
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        placeholder="Escribir" name="um" [(ngModel)]="datospt.umbral">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
                     <!-- <div style="margin: auto">
                         <button type="button" class="btn btn-primary btn-sm">Guardar</button><br><br>
                         <button type="button" class="btn btn-primary btn-sm">Cancelar</button>
                     </div> -->
                     <br>
 
-                    <div class="container" >
+                    <div class="container">
                         <div class="teal">
                             <h4>Criterios de valoración</h4>
                             <div class="modal-body">
-                                <table class="table table-sm" >
+                                <table class="table table-sm">
                                     <thead>
                                         <tr>
+                                            
                                             <th scope="col">Criterio</th>
                                             <th scope="col">Tipo de criterio</th>
                                             <th scope="col">Ponderación (%)</th>
                                             <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr *ngFor="let criterio of criterios" >
-                                            <td> {{criterio.criterio}}</td>
+                                    <tbody >
+                                       
+                                        <tr type="input" *ngFor="let criterio of criterios" name="criterio" >
+                                            
+                                            <td>{{criterio.criterio}}</td>
                                             <td>{{criterio.tipoCriterio}}</td>
                                             <td>{{criterio.ponderacion}}</td>
                                             <td>
@@ -82,16 +81,17 @@
                                                     data-toggle="modal" data-target="#exampleModal">
                                                     <i class="far fa-edit"></i> Editar
                                                 </div>
-                                                <div class="float-center" (click)="eliminar(criterio)">
+                                                <div class="float-center mx-5 " (click)="eliminar(criterio)">
                                                     <i class="far fa-trash-alt"></i> Eliminar
                                                 </div>
                                             </td>
                                         </tr>
+                                    
                                     </tbody>
                                 </table>
                             </div>
 
-                            <button type="button" class="btn btn-primary btn-sm" (click)="show=true"><i
+                            <button type="button" class="btn btn-primary btn-sm" (click)="show = true"><i
                                     class="fas fa-plus"></i> Nuevo criterio de valoración</button>
                             <br><br>
 
@@ -182,13 +182,16 @@
                 </div>
                 <br>
                 
-                <button type="submit" class="btn btn-primary btn-sm" (click)="agregarpt()" ><i
+                <button type="submit" class="btn btn-primary btn-sm float-center" (click)="agregarpt()" ><i
                     class="far fa-save"></i> Guardar
                 Plantilla</button>
+                <br>
+            </div>
+                
+            </div>
             </div>
         </div>
-    </div>
-</div>
+
 
 <!-- Ventana donde se edita el criterio -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"

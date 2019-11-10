@@ -1,6 +1,7 @@
 <app-menu></app-menu>
-<div class="card card-5">
+<div class="card card-5 float-center ">
   <div class="container">
+      <div class="teal">
     <div class="row">
       <div class="col-sm">
 
@@ -12,53 +13,119 @@
 
       </div>
     </div>
-  </div>
   <div class="row">
     <div class="col">
     </div>
-    <div class="col">
-    </div>
+    
 
   </div>
-  <table class="table table-sm">
+  <div class="modal-body">
+  <table class="table table-sm float-center">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Lista de chequeo</th>
+          <th scope="col"></th>
+        <th scope="col">Nombre Raiz</th>
         <th scope="col">Plantilla</th>
-
-
+        <th scope="col">Umbral</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>fds2r</td>
-        <td>pedro</td>
-
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>fds2r</td>
-        <td>pedro</td>
-
-
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>fds2r</td>
-        <td>fds2r</td>
+      <tr *ngFor="let plantilla of plantilla">
+          <td></td>
+        <td>{{plantilla.nombreraiz}}</td>
+        <td>{{plantilla.nombrePlantilla}}</td>
+        <td>{{plantilla.umbral}}</td>
+        <td>
+            <div class="float-center mx-5" (click)="editar(plantilla)"
+                data-toggle="modal" data-target="#exampleModal">
+                <i class="far fa-edit"></i>Editar
+            </div>
+            <div class="float-center mx-5" (click)="eliminar(plantilla)">
+                <i class="far fa-trash-alt"></i> Eliminar
+            </div>
+        </td>
       </tr>
     </tbody>
 
   </table>
+</div>
   <div class="row">
     <div class="col">
     </div>
-    <div class="col">
-    </div>
+    
     <div class="col">
       <button type="button" class="btn btn-warning" [routerLink]="['/plantilla']">Nueva plantilla</button>
     </div>
   </div>
 </div>
+</div>
+
+
+<!-- Ventana donde se edita la pantilla -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Plantilla</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="agregarPlantillaEditada()">
+                    <div class="container">
+                        <div class="row">
+                            <div class="w-100"></div>
+                            <div class="col">Nombre raiz:</div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="criterio" placeholder="Escribir"
+                                        [(ngModel)]="edit.nombreraiz" required>
+                                </div>
+                            </div>
+                            <div class="col">Nombre plantilla:</div>
+                            <div class="col">
+                              <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="criterio" placeholder="Escribir"
+                                        name="plantilla" [(ngModel)]="edit.nombrePlantilla" required>
+                                </div>
+                              </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="w-100"></div>
+                            <div class="col">Umbral:</div>
+                            <div class="col">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="Escribir" min="1"
+                                            required name="umbral" [(ngModel)]="edit.umbral">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">Observaciones</div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="3"
+                                                [(ngModel)]="edit.observaciones" name="des"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i> Editar plantilla</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </form>
+                    </div>
+            </div>
+        </div>
+    </div>

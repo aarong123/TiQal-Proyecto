@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CriterioService } from 'src/app/services/criterio/criterio.service';
-import { PtService} from 'src/app/services/pt/pt.service'
-
+import { PlantService} from 'src/app/services/plant/plant.service';
 @Component({
   selector: 'app-crearplantilla',
   templateUrl: './crearplantilla.component.html',
@@ -13,11 +12,11 @@ export class CrearplantillaComponent implements OnInit {
   plantilla: any;
 
   datospt: any = {
-    nombreraiz: '',
+  nombreraiz: '',
   nombrePlantilla: '',
   observaciones: '',
   umbral: '',
-  criterio1: '',
+  criterios: [],
   }
 
   datosCriterio: any = {
@@ -34,8 +33,8 @@ export class CrearplantillaComponent implements OnInit {
     desCriterio: '',
   }
 
-  constructor(private criteriosConexion : CriterioService , private ptConexion : PtService) {
-    this.ptConexion.listaplatillas().subscribe( plantillas => {
+  constructor(private criteriosConexion : CriterioService , private plantConexion : PlantService) {
+    this.plantConexion.listaplatillas().subscribe( plantillas => {
       this.plantilla = plantillas;
       console.log(this.plantilla);  
     })
@@ -47,25 +46,25 @@ export class CrearplantillaComponent implements OnInit {
 
 
   ngOnInit() {
-
   }
 
-  agregarpt(){
-    this.ptConexion.agregarplanilla(this.datospt);
-    this.datospt.nombreraiz = '';
-    this.datospt.nombrePlantilla = '';
-    this.datospt.observaciones = '';
-    this.datospt.umbral = undefined;
-    this.datospt.criterio1 = '';
-
-    
-  }
   agregar(){
     this.criteriosConexion.agregarCriterio(this.datosCriterio);
     this.datosCriterio.criterio = '';
     this.datosCriterio.tipoCriterio = '';
     this.datosCriterio.ponderacion = undefined;
     this.datosCriterio.desCriterio = '';
+  }
+
+  agregarpt(){
+    this.plantConexion.agregarplanilla(this.datospt);
+    this.datospt.nombreraiz = '';
+    this.datospt.nombrePlantilla = '';
+    this.datospt.observaciones = '';
+    this.datospt.umbral = undefined;
+    this.datospt.criterios = this.criterios;
+
+    
   }
 
   eliminar(criterio) {

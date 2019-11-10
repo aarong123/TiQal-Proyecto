@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-
+import { UserResolver } from './user/user.resolver';
+import { AuthGuard } from './core/auth.guard';
+import { AuthService } from './core/auth.service';
+import { UserService } from './core/user.service';
+import { ReactiveFormsModule } from '@angular/forms';
 //Rutas
 import { MenuComponent } from './components/menu/menu.component';
 import { CrearplantillaComponent } from './components/crearplantilla/crearplantilla.component';
@@ -11,8 +15,10 @@ import { CriteriosComponent } from './components/criterios/criterios.component';
 import { HomeComponent } from './components/home/home.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { TablaadminComponent } from './components/tablaadmin/tablaadmin.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { PaginanoencontradaComponent } from './components/paginanoencontrada/paginanoencontrada.component';
+import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -23,6 +29,8 @@ import { environment } from '../environments/environment';
 
 //Servicios
 import { CriterioService } from './services/criterio/criterio.service';
+import { GrafiComponent } from './components/grafi/grafi.component';
+
 
 @NgModule({
   declarations: [
@@ -35,18 +43,23 @@ import { CriterioService } from './services/criterio/criterio.service';
     TablaadminComponent,
     LoginComponent,
     PaginanoencontradaComponent,
+   
+    UserComponent,
+    RegisterComponent,
+    GrafiComponent,
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule
+    
   ],
-  providers: [CriterioService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard,CriterioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
