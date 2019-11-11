@@ -36,8 +36,9 @@ export class GrafiComponent  implements OnInit {
 		data: [{  
       type: "column",
 			dataPoints: [
-        { y: 70 , label: "Naranja"
-        }
+        { y: 20 , label: "Verdadero"},
+        {y: 5 , label: "Falso"}
+        
 			]
     }]
      
