@@ -29,16 +29,21 @@ export class PlantillaService {
 
     constructor(private afs: AngularFirestore) {
         this.plantilasCollection = afs.collection<Planilla>('planillas');
+    }
+
+    viewLista() {
         this.planillas = this.plantilasCollection.snapshotChanges().pipe(
             map(actions => actions.map(a => {
                 const data = a.payload.doc.data() as Planilla;
                 const id = a.payload.doc.id;
+                console.log(data)
                 return { id, ...data };
             }))
         );
+        return this.planillas;
     }
 
-    listaplatillas() {
+    listaplatillas(): Observable<any> {
         return this.planillas;
     }
 

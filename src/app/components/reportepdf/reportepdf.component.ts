@@ -4,6 +4,38 @@ import { ScriptService } from './script.service';
 import { PlantillaService } from '../../services/plantilla/plantilla.service'
 
 declare let pdfMake: any;
+var d = new Date();
+var ano = d.getFullYear();
+
+var month = new Array();
+month[0] = "Enero";
+month[1] = "Febrero";
+month[2] = "Marzo";
+month[3] = "Abril";
+month[4] = "Mayo";
+month[5] = "Junio";
+month[6] = "Julio";
+month[7] = "Agosto";
+month[8] = "Septiembre";
+month[9] = "Octubre";
+month[10] = "Noviembre";
+month[11] = "Diciembre";
+
+var mes = month[d.getMonth()];
+var dia = d.getDate();
+
+function addZero(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+var h = addZero(d.getHours());
+var m = addZero(d.getMinutes());
+var s = addZero(d.getSeconds());
+
+
 @Component({
   selector: 'app-reportepdf',
   templateUrl: './reportepdf.component.html',
@@ -11,8 +43,7 @@ declare let pdfMake: any;
 })
 export class ReportepdfComponent implements OnInit {
 
-
-  planillas: any;
+  planillas: Array<any>;
 
   datosplantilla: any = {
     valo1: '',
@@ -26,10 +57,15 @@ export class ReportepdfComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.planillas = new Array<any>();
+    this.viewData()
   }
 
-
+  viewData() {
+    this.PlantillaService.viewLista().subscribe((elements) => {
+      this.planillas.push(...elements);
+    })
+  }
 
   agregar() {
     this.PlantillaService.agregarplanilla(this.datosplantilla);
@@ -58,15 +94,14 @@ export class ReportepdfComponent implements OnInit {
 
   resume = new Resume();
 
-  degrees = ['B.E.', 'M.E.', 'B.Com', 'M.Com'];
+  anos = [ano];
+  meses = [mes];
+  dias = [dia];
+  horas = [h + ":" + m + ":" + s];
 
   constructor(private PlantillaService: PlantillaService, private scriptService: ScriptService) {
-    this.PlantillaService.listaplatillas().subscribe(planilla => {
-      this.planillas = planilla;
-      console.log(this.planillas);
-    })
 
-      this.resume = JSON.parse(sessionStorage.getItem('Check list')) || new Resume();
+    this.resume = JSON.parse(sessionStorage.getItem('Check list')) || new Resume();
     if (!this.resume.experiences || this.resume.experiences.length === 0) {
       this.resume.experiences = [];
       this.resume.experiences.push(new Experience());
@@ -125,33 +160,37 @@ export class ReportepdfComponent implements OnInit {
         {
           columns: [
             [{
-              text: this.resume.name,
-              style: 'Nombre'
+              text: 'Nombre de la lista: ' + this.resume.name,
+              bold: true,
             },
             {
-              text: this.resume.address
+              text: 'Número consecutivo: ' + this.resume.contactNo,
+              bold: true,
             },
             {
-              text: 'Correo : ' + this.resume.email,
+              text: 'Observaciones: ' + this.resume.address,
+              bold: true,
             },
             {
-              text: 'Numero de telefono ' + this.resume.contactNo,
+              text: 'Referencia : ' + this.resume.email,
+              bold: true,
             },
-            {
-              text: 'Cargo: ' + this.resume.socialProfile,
-              link: this.resume.socialProfile,
-              color: 'blue',
-            }
+         
+              /* {
+                 text: 'Cargo: ' + this.resume.socialProfile,
+                 link: this.resume.socialProfile,
+                 color: 'blue',
+               }*/
             ],
             [
               this.getProfilePicObject()
             ]
           ]
         },
-        {
-          text: 'Platilla',
+        /*{
+          text: 'Plantilla',
           style: 'header'
-        },
+        },*/
         {
           columns: [
             {
@@ -171,33 +210,34 @@ export class ReportepdfComponent implements OnInit {
             }
           ]
         },
-        {
+        /*{
           text: 'Experencia',
           style: 'header'
         },
         this.getExperienceObject(this.resume.experiences),
-
+        */
         {
-          text: 'Empresa',
+          text: 'Fecha de diligenciamiento',
           style: 'header'
         },
         this.getEducationObject(this.resume.educations),
-        {
+        /*{
           text: 'Otros detalles',
           style: 'header'
-        },
+        },*/
         {
           text: this.resume.otherDetails
         },
         {
-          text: 'Signature',
+          text: 'Nombre de la lista de chequeo:',
+          bold: true,
           style: 'sign'
         },
         {
           columns: [
-            { qr: this.resume.name + ', Numero de telefono : ' + this.resume.contactNo, fit: 100 },
+            { qr: 'Nombre de la lista de chequeo: ' + this.resume.name + ', Numero consecutivo : ' + this.resume.contactNo, fit: 100 },
             {
-              text: `(${this.resume.name})`,
+              text: `${this.resume.name}`,
               alignment: 'right',
             }
           ]
@@ -211,7 +251,7 @@ export class ReportepdfComponent implements OnInit {
       },
       styles: {
         header: {
-          fontSize: 18,
+          fontSize: 14,
           bold: true,
           margin: [0, 20, 0, 10],
           decoration: 'underline'
@@ -276,11 +316,12 @@ export class ReportepdfComponent implements OnInit {
 
   getEducationObject(educations: Education[]) {
     return {
+      margin: [0, 10, 0, 0],
       table: {
         widths: ['*', '*', '*', '*'],
         body: [
           [{
-            text: 'Trabajo',
+            text: 'Año',
             style: 'tableHeader'
           },
           {
@@ -288,16 +329,16 @@ export class ReportepdfComponent implements OnInit {
             style: 'tableHeader'
           },
           {
-            text: 'Feche inicio',
+            text: 'Día',
             style: 'tableHeader'
           },
           {
-            text: 'Fecha fin',
+            text: 'Hora',
             style: 'tableHeader'
           },
           ],
           ...educations.map(ed => {
-            return [ed.degree, ed.college, ed.passingYear, ed.percentage];
+            return [this.anos, this.meses, this.dias, this.horas];
           })
         ]
       }

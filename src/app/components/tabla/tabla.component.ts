@@ -7,7 +7,7 @@ import { PlantillaService } from '../../services/plantilla/plantilla.service'
   styleUrls: ['./tabla.component.css']
 })
 export class TablaComponent implements OnInit {
-  planillas: any;
+  planillas: Array<any>;
 
   datosplantilla: any = {
   valo1:'',
@@ -21,13 +21,17 @@ export class TablaComponent implements OnInit {
 }
 
 constructor(private PlantillaService : PlantillaService) {
-  this.PlantillaService.listaplatillas().subscribe(planilla => {
-    this.planillas = planilla;
-    console.log(this.planillas);  
-  })
+ 
  }
   ngOnInit() {
-    
+    this.planillas = new Array<any>();
+    this.viewData()
+  }
+
+  viewData(){
+    this.PlantillaService.viewLista().subscribe((elements) => {
+      this.planillas.push(...elements);
+    })
   }
 
   

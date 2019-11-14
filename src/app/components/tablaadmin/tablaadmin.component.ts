@@ -7,14 +7,14 @@ import { PlantService } from 'src/app/services/plant/plant.service';
   styleUrls: ['./tablaadmin.component.css']
 })
 export class TablaadminComponent implements OnInit {
-  plantilla: any;
+  plantilla: Array<any>;
 
   datospt: any = {
-  nombreraiz: '',
-  nombrePlantilla: '',
-  observaciones: '',
-  umbral: '',
-  criterios: [],
+    nombreraiz: '',
+    nombrePlantilla: '',
+    observaciones: '',
+    umbral: '',
+    criterios: [],
   }
 
   edit: any = {
@@ -23,15 +23,20 @@ export class TablaadminComponent implements OnInit {
     observaciones: '',
     umbral: '',
     criterios: [],
-    }
-
-  constructor( private plantConexion : PlantService) {
-    this.plantConexion.listaplatillas().subscribe( plantillas => {
-      this.plantilla = plantillas;
-      console.log(this.plantilla);  
-    })
   }
+
+  constructor(private plantConexion: PlantService) {
+  }
+
   ngOnInit() {
+    this.plantilla = new Array<any>();
+    this.viewData()
+  }
+
+  viewData() {
+    this.plantConexion.viewPlantilla().subscribe((elements) => {
+      this.plantilla.push(...elements)
+    })
   }
 
   eliminar(plantilla) {
@@ -42,7 +47,7 @@ export class TablaadminComponent implements OnInit {
     this.edit = plantilla;
   }
 
-  agregarPlantillaEditada(){
+  agregarPlantillaEditada() {
     this.plantConexion.editarplanilla(this.edit);
   }
 
