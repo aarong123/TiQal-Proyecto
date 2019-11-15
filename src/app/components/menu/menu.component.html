@@ -10,19 +10,19 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="active nav-link" *ngIf='user.provider == "password"'>
+        <a class="active nav-link" [routerLink]="['/user']" *ngIf='user.provider == "password"'>
           <h5>{{user.name}}</h5>
         </a>
       </li>
       <!-- <a class="nav-item nav-link" [routerLink]="['/home']">Crear lista de chequeo (Opción temporal)</a> -->
       <li class="nav-item">
-        <a class=" nav-link" [routerLink]="['/GrafiComponent']">Gráficos</a>
+        <a class="nav-link" [routerLink]="['/GrafiComponent']">Gráficos</a>
       </li>
       <li class="nav-item">
-        <a class=" nav-link" [routerLink]="['/tabla']">Tabla del rol Staff (Generar PDF)</a>
+        <a class="nav-link" [routerLink]="['/tabla']">Tabla del rol Staff (Generar PDF)</a>
       </li>
       <li class="nav-item">
-        <a class=" nav-link" [routerLink]="['/tablaADMIN']">Tabla del Administrador</a>
+        <a class="nav-link" [routerLink]="['/tablaADMIN']">Tabla del Administrador</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
