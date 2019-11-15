@@ -338,7 +338,7 @@ export class ReportepdfComponent implements OnInit {
           },
           ],
           ...educations.map(ed => {
-            return [this.anos, this.meses, this.dias, this.horas];
+            return [ed.degree, ed.college, ed.passingYear, ed.percentage];
           })
         ]
       }

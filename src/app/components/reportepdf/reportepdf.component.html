@@ -10,14 +10,14 @@
               <i class="fas fa-list-ul"></i> Crear nueva lista de chequeo</h4><br>
             <div class="row">
 
-              <div class="col">Tipo de lista:</div>
+              <div class="col">Plantilla:</div>
               <div class="col">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Opciones</label>
                   </div>
                   <select class="custom-select" name="planilla" required>
-                    <option value=""> Seleccione una lista </option>
+                    <option value=""> Seleccione una plantilla </option>
                     <option *ngFor="let planilla of planillas"> <span> {{planilla.nombreLista}} </span> </option>
                   </select>
                 </div>
@@ -27,8 +27,8 @@
               <div class="col">Nombre de lista:</div>
               <div class="col">
                 <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="resume.name" name="name" placeholder="Ingrese el nombre de la lista"
-                    #Name="ngModel" required
+                  <input type="text" class="form-control" [(ngModel)]="resume.name" name="name"
+                    placeholder="Ingresa el nombre de la lista" #Name="ngModel" required
                     [ngClass]="{'is-invalid': Name.invalid && (Name.touched || resumeForm.submitted) }">
                 </div>
               </div>
@@ -37,8 +37,8 @@
               <div class="col">Número consecutivo:</div>
               <div class="col">
                 <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
-                    placeholder="Numero consecutivo" #ContactNo="ngModel" required
+                  <input type="number" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
+                    placeholder="Escribe un número consecutivo para la lista" #ContactNo="ngModel" required
                     [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || resumeForm.submitted) }">
                 </div>
               </div>
@@ -48,7 +48,7 @@
               <div class="col">
                 <div class="form-group">
                   <textarea class="form-control" [(ngModel)]="resume.address" name="address" rows="3"
-                    placeholder="Escriba sus observaciones" #Address="ngModel" required
+                    placeholder="Escribe tus observaciones" #Address="ngModel" required
                     [ngClass]="{'is-invalid': Address.invalid && (Address.touched || resumeForm.submitted) }"></textarea>
                 </div>
               </div>
@@ -57,8 +57,8 @@
               <div class="col">Referencia:</div>
               <div class="col">
                 <div class="form-group">
-                  <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId" placeholder="Poner un nombre de referencia a la lista"
-                    #Email="ngModel" required
+                  <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId"
+                    placeholder="Pon un nombre de referencia a la lista" #Email="ngModel" required
                     [ngClass]="{'is-invalid': Email.invalid && (Email.touched || resumeForm.submitted) }">
                 </div>
               </div>
@@ -189,37 +189,49 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Año: </label>
-                  <label class="form-control inputcentrado" name="degree{{i}}" [(ngModel)]="this.anos" #Degree="ngModel" required
-                    readonly="readonly"
-                    [ngClass]="{'is-invalid': Degree.invalid && (Degree.touched || resumeForm.submitted) }" *ngFor="let a of anos" ngDefaultControl>{{a}}
-                  </label>
+                  <select class="form-control inputcentrado" name="degree{{i}}" [(ngModel)]="ed.degree"
+                    #Degree="ngModel" required readonly="readonly"
+                    [ngClass]="{'is-invalid': Degree.invalid && (Degree.touched || resumeForm.submitted) }"
+                    ngDefaultControl>
+                    <option value="" selected = "selected" disabled>Selecciona año actual</option>
+                    <option [value]="a" *ngFor="let a of anos">{{a}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Mes: </label>
-                  <label class="form-control inputcentrado" name="college{{i}}" [(ngModel)]="this.meses" #College="ngModel" required
-                    readonly="readonly"
-                    [ngClass]="{'is-invalid': College.invalid && (College.touched || resumeForm.submitted) }" *ngFor="let m of meses" ngDefaultControl>{{m}}
-                  </label>
+                  <select class="form-control inputcentrado" name="college{{i}}" [(ngModel)]="ed.college"
+                    #College="ngModel" required readonly="readonly"
+                    [ngClass]="{'is-invalid': College.invalid && (College.touched || resumeForm.submitted) }"
+                    ngDefaultControl>
+                    <option value="" selected = "selected" disabled>Selecciona mes actual</option>
+                    <option [value]="m" *ngFor="let m of meses">{{m}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Día: </label>
-                  <label class="form-control inputcentrado" name="passingYear{{i}}" [(ngModel)]="this.dias" placeholder="Dia"
-                    #PassingYear="ngModel" required readonly="readonly"
-                    [ngClass]="{'is-invalid': PassingYear.invalid && (PassingYear.touched || resumeForm.submitted) }" *ngFor="let d of dias" ngDefaultControl>{{d}}
-                  </label>
+                  <select class="form-control inputcentrado" name="passingYear{{i}}" [(ngModel)]="ed.passingYear"
+                    placeholder="Dia" #PassingYear="ngModel" required readonly="readonly"
+                    [ngClass]="{'is-invalid': PassingYear.invalid && (PassingYear.touched || resumeForm.submitted) }"
+                    ngDefaultControl>
+                    <option value="" selected = "selected" disabled>Selecciona día actual</option>
+                    <option [value]="d" *ngFor="let d of dias">{{d}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Hora: </label>
-                  <label class="form-control inputcentrado" name="percentage{{i}}" [(ngModel)]="this.horas" #Percentage="ngModel"
-                    required readonly="readonly" id="hora"
-                    [ngClass]="{'is-invalid': Percentage.invalid && (Percentage.touched || resumeForm.submitted) }" *ngFor="let h of horas" ngDefaultControl>{{h}}
-                  </label>
+                  <select class="form-control inputcentrado" name="percentage{{i}}" [(ngModel)]="ed.percentage"
+                    #Percentage="ngModel" required readonly="readonly"
+                    [ngClass]="{'is-invalid': Percentage.invalid && (Percentage.touched || resumeForm.submitted) }"
+                    ngDefaultControl>
+                    <option value="" selected = "selected" disabled>Selecciona hora actual</option>
+                    <option [value]="h" *ngFor="let h of horas">{{h}}</option>
+                  </select>
                 </div>
               </div>
             </div>
