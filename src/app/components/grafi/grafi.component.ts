@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import * as CanvasJS from '../../../assets/canvasjs.min';
 import { CriterioService } from 'src/app/services/criterio/criterio.service';
+
 
 @Component({
   selector: 'app-grafi',
@@ -8,7 +9,6 @@ import { CriterioService } from 'src/app/services/criterio/criterio.service';
   styleUrls: ['./grafi.component.css']
 })
 export class GrafiComponent  implements OnInit {
- 
   criterios: any;
 
   datosCriterio: any = {
@@ -17,42 +17,34 @@ export class GrafiComponent  implements OnInit {
     ponderacion: '',
     desCriterio: '',
   }
-
-
+  
   constructor(private criteriosConexion : CriterioService) {
     this.criteriosConexion.listaCriterios().subscribe(criterio => {
-      this.criterios = criterio;
-      console.log(this.criterios);  
-      
-    })
-   }
+        this.criterios = criterio;
+        console.log(this.criterios);  
+   })
+  } 
+
   ngOnInit() {
-    
-		let chart = new CanvasJS.Chart("chartContainer", {
+		let chart = new CanvasJS.Chart("chartContainer",  {
 		animationEnabled: true,
 		exportEnabled: true,
 		title: {
 			text: "Grafico de barras de criterios"
 		},
-		data: [{
-			type: "column",
+		data: [{  
+      type: "column",
 			dataPoints: [
+        { y: 20 , label: "Verdadero"},
+        {y: 5 , label: "Falso"}
         
-				{ y: 71, label: "Apple" },
-				{ y: 55, label: "Mango" },
-				{ y: 50, label: "Orange" },
-				{ y: 65, label: "Banana" },
-				{ y: 95, label: "Pineapple" },
-				{ y: 68, label: "Pears" },
-				{ y: 28, label: "Grapes" },
-				{ y: 34, label: "Lychee" },
-				{ y: 14, label: "Jackfruit" }
 			]
-		}]
+    }]
+     
 	});
 		
-  chart.render();
-  
+ chart.render();
+ 
 
   let chart1 = new CanvasJS.Chart("chartContainer11", {
     theme: "light2",
