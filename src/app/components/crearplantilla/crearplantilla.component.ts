@@ -8,7 +8,7 @@ import { PlantService} from 'src/app/services/plant/plant.service';
 })
 export class CrearplantillaComponent implements OnInit {
 
-  criterios: any;
+  criterios: Array<any>;
   plantilla: any;
 
   datospt: any = {
@@ -38,14 +38,19 @@ export class CrearplantillaComponent implements OnInit {
       this.plantilla = plantillas;
       console.log(this.plantilla);  
     })
-    this.criteriosConexion.listaCriterios().subscribe( criterio => {
-      this.criterios = criterio;
-      console.log(this.criterios);  
-    })
+    
    }
 
 
   ngOnInit() {
+    this.criterios = new Array<any>();
+    this.viewData()
+  }
+
+  viewData() {
+    this.criteriosConexion.viewCriterio().subscribe((elements) => {
+      this.criterios.push(...elements)
+    })
   }
 
   agregar(){

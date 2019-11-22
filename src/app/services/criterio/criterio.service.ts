@@ -23,6 +23,10 @@ export class CriterioService {
 
   constructor(private afs: AngularFirestore) {
     this.criteriosCollection = afs.collection<Criterio>('criterios');
+   
+   }
+
+   viewCriterio(){
     this.criterios = this.criteriosCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Criterio;
@@ -30,8 +34,10 @@ export class CriterioService {
         return { id, ...data };
       }))
     );
+    return this.criterios;
    }
 
+   
    listaCriterios(){
      return this.criterios;
    }

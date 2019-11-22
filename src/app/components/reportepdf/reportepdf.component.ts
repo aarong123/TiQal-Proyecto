@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Resume, Experience, Education, Skill } from './resume';
 import { ScriptService } from './script.service';
-import { PlantillaService } from '../../services/plantilla/plantilla.service'
+import { PlantillaService } from '../../services/plantilla/plantilla.service';
+import { PlantService } from '../../services/plant/plant.service';
 
 declare let pdfMake: any;
 var d = new Date();
@@ -44,7 +45,15 @@ var s = addZero(d.getSeconds());
 export class ReportepdfComponent implements OnInit {
 
   planillas: Array<any>;
+  plantilla: Array<any>;
 
+  datospt: any = {
+    nombreraiz: '',
+    nombrePlantilla: '',
+    observaciones: '',
+    umbral: '',
+    criterios: [],
+  }
   datosplantilla: any = {
     valo1: '',
     valo2: '',
@@ -58,12 +67,19 @@ export class ReportepdfComponent implements OnInit {
 
   ngOnInit() {
     this.planillas = new Array<any>();
+    this.plantilla = new Array<any>();
     this.viewData()
+    this.viewPlantilla()
   }
 
   viewData() {
     this.PlantillaService.viewLista().subscribe((elements) => {
       this.planillas.push(...elements);
+    })
+  }
+  viewPlantilla() {
+    this.PlantService.viewPlantilla().subscribe((elements) => {
+      this.plantilla.push(...elements);
     })
   }
 
@@ -99,7 +115,7 @@ export class ReportepdfComponent implements OnInit {
   dias = [dia];
   horas = [h + ":" + m + ":" + s];
 
-  constructor(private PlantillaService: PlantillaService, private scriptService: ScriptService) {
+  constructor(private PlantillaService: PlantillaService, private scriptService: ScriptService, private PlantService: PlantService) {
 
     this.resume = JSON.parse(sessionStorage.getItem('Check list')) || new Resume();
     if (!this.resume.experiences || this.resume.experiences.length === 0) {
