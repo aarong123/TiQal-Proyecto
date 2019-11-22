@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-criterios',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriteriosComponent implements OnInit {
 
-  constructor() { }
+  constructor( private zone: NgZone) { }
 
   ngOnInit() {
   }
+  reloadPage() { //click handler or similar
+    this.zone.runOutsideAngular(() => {
+        location.reload();
+
+        delay(1000);
+    });
+}
 
 }

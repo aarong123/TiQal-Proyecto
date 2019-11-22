@@ -8,20 +8,25 @@ import { CriterioService } from 'src/app/services/criterio/criterio.service';
   templateUrl: './grafi.component.html',
   styleUrls: ['./grafi.component.css']
 })
-export class GrafiComponent {
+export class GrafiComponent  implements OnInit {
+
+  criterios: any;
+
+  datosCriterio: any = {
+    criterio: '',
+    tipoCriterio: '',
+    ponderacion: '',
+    desCriterio: '',
+  }
   
   constructor(private criteriosConexion : CriterioService) {
-   
-   }
-  ngOnInit() {
-    
-    this.criteriosConexion.listaCriterios().subscribe(res => {
-      let c = res.map( res => res.criterio)
-      let pon = res.map(res=> res.ponderacion)
-       console.log(pon)
-       console.log(c) 
-    
+    this.criteriosConexion.listaCriterios().subscribe(criterio => {
+        this.criterios = criterio;
+        console.log(this.criterios);  
+   })
+  } 
 
+  ngOnInit() {
 		let chart = new CanvasJS.Chart("chartContainer",  {
 		animationEnabled: true,
 		exportEnabled: true,
@@ -29,18 +34,19 @@ export class GrafiComponent {
 			text: "Grafico de barras de criterios"
 		},
 		data: [{  
-      type: "line",
+      type: "column",
 			dataPoints: [
-        { y: pon , label: c
-        }
+        { y: 20 , label: "Verdadero"},
+        {y: 5 , label: "Falso"}
+        
 			]
     }]
      
 	});
 		
  chart.render();
-  
-})
+ 
+
   let chart1 = new CanvasJS.Chart("chartContainer11", {
     theme: "light2",
     animationEnabled: true,

@@ -8,10 +8,10 @@ import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
+
 //Rutas
 import { MenuComponent } from './components/menu/menu.component';
 import { CrearplantillaComponent } from './components/crearplantilla/crearplantilla.component';
-import { CriteriosComponent } from './components/criterios/criterios.component';
 import { HomeComponent } from './components/home/home.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { TablaadminComponent } from './components/tablaadmin/tablaadmin.component';
@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { PaginanoencontradaComponent } from './components/paginanoencontrada/paginanoencontrada.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
+import { GrafiComponent } from './components/grafi/grafi.component';
+import { ReportepdfComponent } from './components/reportepdf/reportepdf.component';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -29,7 +31,6 @@ import { environment } from '../environments/environment';
 
 //Servicios
 import { CriterioService } from './services/criterio/criterio.service';
-import { GrafiComponent } from './components/grafi/grafi.component';
 
 
 @NgModule({
@@ -37,16 +38,15 @@ import { GrafiComponent } from './components/grafi/grafi.component';
     AppComponent,
     MenuComponent,
     CrearplantillaComponent,
-    CriteriosComponent,
     HomeComponent,
     TablaComponent,
     TablaadminComponent,
     LoginComponent,
     PaginanoencontradaComponent,
-   
     UserComponent,
     RegisterComponent,
     GrafiComponent,
+    ReportepdfComponent,
 
   ],
   imports: [
